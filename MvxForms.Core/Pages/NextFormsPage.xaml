@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage  x:TypeArguments="viewModels:NextFormsViewModel"
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:MvxForms.Core.Pages" 
+	xmlns:viewModels="clr-namespace:MvxForms.Core.ViewModels;assembly=MvxForms.Core" 
+	x:Class="MvxForms.Core.Pages.NextFormsPage" 
+	xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Core">
+	<ContentPage.Content>
+		<Label Text="{Binding WelcomeStr}" VerticalOptions="Center" HorizontalOptions="Center" />
+	</ContentPage.Content>
+</d:MvxContentPage>
