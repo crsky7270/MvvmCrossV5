@@ -82,6 +82,16 @@
   <ItemGroup>
     <Folder Include="Pages\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MvxForms.IBLL\MvxForms.IBLL.csproj">
+      <Project>{F6C37F4A-ED95-4991-A561-35829188A72B}</Project>
+      <Name>MvxForms.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvxForms.BLL\MvxForms.BLL.csproj">
+      <Project>{BCD51768-E87F-4EF5-959F-A8D981E8573B}</Project>
+      <Name>MvxForms.BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>
