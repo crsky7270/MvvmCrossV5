@@ -5,9 +5,10 @@
 	xmlns:local="clr-namespace:MvxForms.Core.Pages"
 	x:Class="MvxForms.Core.Pages.BaiduMapPage"
 	xmlns:viewModels="clr-namespace:MvxForms.Core.ViewModels;assembly=MvxForms.Core"
-	xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Core">
+	xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Core"
+	xmlns:maps="clr-namespace:Xamarin.Forms.BoowayMap;assembly=Xamarin.Forms.BoowayMap">
 	<StackLayout>
-		<Label Text="Baidu Map Page" HorizontalOptions="Center" VerticalOptions="Center" />
+	<maps:Map x:Name="mapView" />
 	</StackLayout>
 </d:MvxContentPage>
 

@@ -8,7 +8,10 @@ using MvvmCross.Platform;
 
 namespace MvxForms.Droid
 {
-    [Activity(Label = "MvxForms.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "MvxForms.Droid", 
+	          Icon = "@drawable/icon", 
+	          Theme = "@style/MyTheme", 
+	          ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : MvxFormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -16,6 +19,14 @@ namespace MvxForms.Droid
             base.OnCreate(bundle);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-        }
+			//Xamarin.Forms.Forms.Init(this, bundle);
+			InitMap();
+		}
+
+		private void InitMap() 
+		{
+			Xamarin.FormsMap.Init(null);
+		}
+
     }
 }

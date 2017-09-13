@@ -11,6 +11,7 @@ namespace MvxForms.Core.ViewModels
 		public NextFormsViewModel(IMvxNavigationService navServcie)
 		{
 			_navigationService = navServcie;
+
 		}
 
 		public string WelcomeStr { get; set; } = "Next Page ParamIn:";
@@ -18,6 +19,7 @@ namespace MvxForms.Core.ViewModels
 		public override Task Initialize(object parameter)
 		{
 			WelcomeStr += parameter.ToString();
+
 			return base.Initialize();
 			//throw new NotImplementedException();
 		}

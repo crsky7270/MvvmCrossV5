@@ -135,6 +135,15 @@
     <Reference Include="Xamarin.Android.Support.v7.CardView">
       <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
     </Reference>
+    <Reference Include="BMapBinding.Droid">
+      <HintPath>..\Lib\BMapBinding.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.BoowayMap.Droid">
+      <HintPath>..\Lib\Xamarin.Forms.BoowayMap.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvxForms.Core\MvxForms.Core.csproj">

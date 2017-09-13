@@ -7,7 +7,7 @@
     xmlns:viewModels="clr-namespace:MvxForms.Core.ViewModels;assembly=MvxForms.Core"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Core">
 	<StackLayout>
-		   <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
+	   	<Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
 		<Entry Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
 		<Button Text="go to next page" Command="{Binding JumpToNextCommand}" />
 		<Button Text="go to baidu Map page" Command="{Binding JumpToBaiduMapCommand}" />

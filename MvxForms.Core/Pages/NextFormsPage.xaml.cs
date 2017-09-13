@@ -11,6 +11,7 @@ namespace MvxForms.Core.Pages
 		public NextFormsPage()
 		{
 			InitializeComponent();
+			NavigationPage.SetHasNavigationBar(this, false);
 		}
 	}
 }
