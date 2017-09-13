@@ -26,6 +26,8 @@ namespace MvxForms.Core.ViewModels
 
 		public IMvxCommand JumpToNextCommand => new MvxCommand(JumpToNext);
 
+		public IMvxCommand JumpToBaiduMapCommand => new MvxCommand(JumpToBaiduMapPage);
+
 		private void JumpToNext()
 		{
 			_navigationService.Navigate<NextFormsViewModel, object>(_userBLL.GetUserNameById(1));
@@ -34,6 +36,10 @@ namespace MvxForms.Core.ViewModels
 		private void ResetText()
 		{
 			Text = "Hello MvvmCross";
+		}
+
+		private void JumpToBaiduMapPage() {
+			_navigationService.Navigate<BaiduMapViewModel>();
 		}
 
 		private string _text = "Hello MvvmCross";

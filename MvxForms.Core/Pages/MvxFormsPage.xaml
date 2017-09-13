@@ -10,5 +10,6 @@
 		   <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
 		<Entry Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
 		<Button Text="go to next page" Command="{Binding JumpToNextCommand}" />
+		<Button Text="go to baidu Map page" Command="{Binding JumpToBaiduMapCommand}" />
 	</StackLayout>
 </d:MvxContentPage>

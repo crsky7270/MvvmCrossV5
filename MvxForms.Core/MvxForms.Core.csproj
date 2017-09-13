@@ -34,6 +34,9 @@
     <EmbeddedResource Include="Pages\NextFormsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\BaiduMapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -49,6 +52,10 @@
       <DependentUpon>NextFormsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\NextFormsViewModel.cs" />
+    <Compile Include="Pages\BaiduMapPage.xaml.cs">
+      <DependentUpon>BaiduMapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BaiduMapViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
