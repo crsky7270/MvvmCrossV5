@@ -11,7 +11,7 @@ namespace MvxForms.BLL
 
 		public string GetUserNameById(int uid)
 		{
-			throw new NotImplementedException();
+			return uid == 1 ? "Crsky" : "Guest";
 		}
 	}
 }

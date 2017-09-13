@@ -13,10 +13,11 @@ namespace MvxForms.Core.ViewModels
 			_navigationService = navServcie;
 		}
 
-		public string WelcomeStr { get; set; } = "Next Page";
+		public string WelcomeStr { get; set; } = "Next Page ParamIn:";
 
 		public override Task Initialize(object parameter)
 		{
+			WelcomeStr += parameter.ToString();
 			return base.Initialize();
 			//throw new NotImplementedException();
 		}

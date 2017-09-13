@@ -1,4 +1,7 @@
+using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
+using MvxForms.BLL;
+using MvxForms.IBLL;
 
 namespace MvxForms.Core
 {
@@ -10,6 +13,8 @@ namespace MvxForms.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+
+			Mvx.RegisterType<IUserBLL, UserBLL>();
 
             RegisterAppStart<ViewModels.MvxFormsViewModel>();
         }
