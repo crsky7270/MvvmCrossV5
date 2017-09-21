@@ -11,7 +11,9 @@ namespace MvxForms.Core.Pages
 		public BaiduMapPage()
 		{
 			InitializeComponent();
-			NavigationPage.SetHasNavigationBar(this, false);
+			//NavigationPage.SetHasNavigationBar(this, false);
+			NavigationPage.SetHasBackButton(this, true);
+			NavigationPage.SetBackButtonTitle(this, "title");
 		}
 	}
 }
