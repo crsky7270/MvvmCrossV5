@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ex:CarouselExPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="MvxForms.Core.SingleCarourselPage"
+	xmlns:ex="clr-namespace:MvxForms.Platform.Forms.ExPages;assembly=MvvmCross.Platform.Forms">
+	<CarouselExPage.Content>
+	</CarouselExPage.Content>
+</ex:CarouselExPage>

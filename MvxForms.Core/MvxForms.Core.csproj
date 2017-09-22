@@ -37,6 +37,9 @@
     <EmbeddedResource Include="Pages\BaiduMapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SingleCarourselPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -56,6 +59,11 @@
       <DependentUpon>BaiduMapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaiduMapViewModel.cs" />
+    <Compile Include="ViewModels\TestCarouselExViewModel.cs" />
+    <Compile Include="Pages\SingleCarourselPage.xaml.cs">
+      <DependentUpon>SingleCarourselPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TestCarouselExPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -103,6 +111,10 @@
     <ProjectReference Include="..\MvxForms.BLL\MvxForms.BLL.csproj">
       <Project>{BCD51768-E87F-4EF5-959F-A8D981E8573B}</Project>
       <Name>MvxForms.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvxForms.Platform.Forms\MvxForms.Platform.Forms.csproj">
+      <Project>{2370D8CB-53E3-45E9-9BA4-ADC6757D66EE}</Project>
+      <Name>MvxForms.Platform.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

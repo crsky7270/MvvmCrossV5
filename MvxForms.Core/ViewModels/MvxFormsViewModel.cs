@@ -28,6 +28,8 @@ namespace MvxForms.Core.ViewModels
 
 		public IMvxCommand JumpToBaiduMapCommand => new MvxCommand(JumpToBaiduMapPage);
 
+		public IMvxCommand JumpToCarouselExPageCommand => new MvxCommand(JumpToCarouselPage);
+
 		private void JumpToNext()
 		{
 			_navigationService.Navigate<NextFormsViewModel, object>(_userBLL.GetUserNameById(1));
@@ -38,8 +40,14 @@ namespace MvxForms.Core.ViewModels
 			Text = "Hello MvvmCross";
 		}
 
-		private void JumpToBaiduMapPage() {
+		private void JumpToBaiduMapPage()
+		{
 			_navigationService.Navigate<BaiduMapViewModel>();
+		}
+
+		private void JumpToCarouselPage()
+		{
+			//_navigationService.Navigate<TestCarouselExViewModel>();
 		}
 
 		private string _text = "Hello MvvmCross";

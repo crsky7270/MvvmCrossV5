@@ -150,6 +150,10 @@
       <Project>{F51D9DFF-9348-48C3-A075-03F7EB4175C2}</Project>
       <Name>MvxForms.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MvxForms.Platform.Forms\MvxForms.Platform.Android\MvxForms.Platform.Android.csproj">
+      <Project>{B68788AF-7E52-4A2D-9F31-126EA63A53AA}</Project>
+      <Name>MvxForms.Platform.Android</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
