@@ -16,17 +16,7 @@ namespace MvxForms.Core
 				.RegisterAsLazySingleton();
 
 			Mvx.RegisterType<IUserBLL, UserBLL>();
-
-			try
-			{
-				RegisterAppStart<MvxForms.Platform.Forms.ExPages.CarouselExViewModel>();
-			}
-
-			catch (Exception ex)
-			{
-				throw ex;
-			}
-
+			RegisterAppStart<ViewModels.MvxFormsViewModel>();
 		}
 	}
 }

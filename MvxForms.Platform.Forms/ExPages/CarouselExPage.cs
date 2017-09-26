@@ -11,60 +11,57 @@ using System.Collections.Generic;
 
 namespace MvxForms.Platform.Forms.ExPages
 {
-	public class CarouselExViewModel : MvxViewModel
+	public class CarouselExPage : ContentPage
 	{
-	}
-
-	public class CarouselExPage : MvvmCross.Forms.Core.MvxContentPage<CarouselExViewModel>
-	{
-		View _tabs;
-		RelativeLayout relativeLayout;
 		CarouselLayout.IndicatorStyleEnum _indicatorStyle;
-		DefaultCarouselItemSource defaultCarouseItemSource;
 
-		public CarouselExPage()//CarouselLayout.IndicatorStyleEnum style
+		public CarouselExPage()
 		{
 			_indicatorStyle = CarouselLayout.IndicatorStyleEnum.Dots;
 
-			defaultCarouseItemSource = new DefaultCarouselItemSource();
-			BindingContext = defaultCarouseItemSource;
+			BindingContext = new DefaultCarouselItemSource();
 
-			relativeLayout = new RelativeLayout()
+			var relativeLayout = new RelativeLayout()
 			{
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
+			//创建Carousel样式布局
 			var pagesCarousel = CreatePagesCarousel();
+			//创建点模式容器
 			var dots = CreatePagerIndicatorContainer();
-			_tabs = CreateTabs();
+			//创建Tab容器
+			var _tabs = CreateTabs();
 
+			//根据引导页类型初始化引导页布局
 			switch (pagesCarousel.IndicatorStyle)
 			{
 				case CarouselLayout.IndicatorStyleEnum.Dots:
+					//添加Carousel布局
 					relativeLayout.Children.Add(pagesCarousel,
 						Constraint.RelativeToParent((parent) => { return parent.X; }),
 						Constraint.RelativeToParent((parent) => { return parent.Y; }),
 						Constraint.RelativeToParent((parent) => { return parent.Width; }),
 						Constraint.RelativeToParent((parent) => { return parent.Height; })
 					);
-
+					//添加点布局
 					relativeLayout.Children.Add(dots,
 						Constraint.Constant(0),
-						Constraint.RelativeToView(pagesCarousel,
-							(parent, sibling) => { return sibling.Height - 18; }),
+						Constraint.RelativeToView(pagesCarousel,(parent, sibling) => { return sibling.Height - 18; }),
 						Constraint.RelativeToParent(parent => parent.Width),
 						Constraint.Constant(18)
 					);
 					break;
 				case CarouselLayout.IndicatorStyleEnum.Tabs:
 					var tabsHeight = 50;
+					//添加tab布局
 					relativeLayout.Children.Add(_tabs,
 						Constraint.Constant(0),
 						Constraint.RelativeToParent((parent) => { return parent.Height - tabsHeight; }),
 						Constraint.RelativeToParent(parent => parent.Width),
 						Constraint.Constant(tabsHeight)
 					);
-
+					//添加Carousel布局
 					relativeLayout.Children.Add(pagesCarousel,
 						Constraint.RelativeToParent((parent) => { return parent.X; }),
 						Constraint.RelativeToParent((parent) => { return parent.Y; }),
@@ -96,7 +93,6 @@ namespace MvxForms.Platform.Forms.ExPages
 			};
 			carousel.SetBinding(CarouselLayout.ItemsSourceProperty, "Pages");
 			carousel.SetBinding(CarouselLayout.SelectedItemProperty, "CurrentPage", BindingMode.TwoWay);
-
 			return carousel;
 		}
 
@@ -140,165 +136,10 @@ namespace MvxForms.Platform.Forms.ExPages
 		string ImageSource { get; set; }
 	}
 
+
 	/// <summary>
-	/// Pager indicator dots.
+	/// 引导页菜单模式布局
 	/// </summary>
-	public class PagerIndicatorDots : StackLayout
-	{
-		int _selectedIndex;
-
-		public Color DotColor { get; set; }
-		public double DotSize { get; set; }
-
-		public PagerIndicatorDots()
-		{
-			HorizontalOptions = LayoutOptions.CenterAndExpand;
-			VerticalOptions = LayoutOptions.Center;
-			Orientation = StackOrientation.Horizontal;
-			DotColor = Color.Black;
-		}
-
-		void CreateDot()
-		{
-			//Make one button and add it to the dotLayout
-			var dot = new Button
-			{
-				BorderRadius = Convert.ToInt32(DotSize / 2),
-				HeightRequest = DotSize,
-				WidthRequest = DotSize,
-				BackgroundColor = DotColor
-			};
-			Children.Add(dot);
-		}
-
-		void CreateTabs()
-		{
-			foreach (var item in ItemsSource)
-			{
-				var tab = item as ITabProvider;
-				var image = new Image
-				{
-					HeightRequest = 42,
-					WidthRequest = 42,
-					BackgroundColor = DotColor,
-					Source = tab.ImageSource,
-				};
-				Children.Add(image);
-			}
-		}
-
-		public static BindableProperty ItemsSourceProperty =
-			BindableProperty.Create(
-				nameof(ItemsSource),
-				typeof(IList),
-				typeof(PagerIndicatorDots),
-				null,
-				BindingMode.OneWay,
-				propertyChanging: (bindable, oldValue, newValue) =>
-				{
-					((PagerIndicatorDots)bindable).ItemsSourceChanging();
-				},
-				propertyChanged: (bindable, oldValue, newValue) =>
-				{
-					((PagerIndicatorDots)bindable).ItemsSourceChanged();
-				}
-		);
-
-		public IList ItemsSource
-		{
-			get
-			{
-				return (IList)GetValue(ItemsSourceProperty);
-			}
-			set
-			{
-				SetValue(ItemsSourceProperty, value);
-			}
-		}
-
-		public static BindableProperty SelectedItemProperty =
-			BindableProperty.Create(
-				nameof(SelectedItem),
-				typeof(object),
-				typeof(PagerIndicatorDots),
-				null,
-				BindingMode.TwoWay,
-				propertyChanged: (bindable, oldValue, newValue) =>
-				{
-					((PagerIndicatorDots)bindable).SelectedItemChanged();
-				}
-		);
-
-		public object SelectedItem
-		{
-			get
-			{
-				return GetValue(SelectedItemProperty);
-			}
-			set
-			{
-				SetValue(SelectedItemProperty, value);
-			}
-		}
-
-		void ItemsSourceChanging()
-		{
-			if (ItemsSource != null)
-				_selectedIndex = ItemsSource.IndexOf(SelectedItem);
-		}
-
-		void ItemsSourceChanged()
-		{
-			if (ItemsSource == null) return;
-
-			// Dots *************************************
-			var countDelta = ItemsSource.Count - Children.Count;
-
-			if (countDelta > 0)
-			{
-				for (var i = 0; i < countDelta; i++)
-				{
-					CreateDot();
-				}
-			}
-			else if (countDelta < 0)
-			{
-				for (var i = 0; i < -countDelta; i++)
-				{
-					Children.RemoveAt(0);
-				}
-			}
-			//*******************************************
-		}
-
-		void SelectedItemChanged()
-		{
-
-			var selectedIndex = ItemsSource.IndexOf(SelectedItem);
-			var pagerIndicators = Children.Cast<Button>().ToList();
-
-			foreach (var pi in pagerIndicators)
-			{
-				UnselectDot(pi);
-			}
-
-			if (selectedIndex > -1)
-			{
-				SelectDot(pagerIndicators[selectedIndex]);
-			}
-		}
-
-		static void UnselectDot(Button dot)
-		{
-			dot.Opacity = 0.5;
-		}
-
-		static void SelectDot(Button dot)
-		{
-			dot.Opacity = 1.0;
-		}
-	}
-
 	public class PagerIndicatorTabs : Grid
 	{
 		int _selectedIndex;
@@ -461,6 +302,9 @@ namespace MvxForms.Platform.Forms.ExPages
 		}
 	}
 
+	/// <summary>
+	/// 引导页显示模板
+	/// </summary>
 	public class CarouselBaseTemplate : ContentView
 	{
 		public CarouselBaseTemplate()
@@ -484,6 +328,9 @@ namespace MvxForms.Platform.Forms.ExPages
 		}
 	}
 
+	/// <summary>
+	/// 引导页viewmodel
+	/// </summary>
 	public abstract class CarouselItemSource : INotifyPropertyChanged
 	{
 		public INavigation Navigation { get; set; }
@@ -507,6 +354,9 @@ namespace MvxForms.Platform.Forms.ExPages
 		#endregion
 	}
 
+	/// <summary>
+	/// 引导页元数据
+	/// </summary>
 	public class CarouselMetaSource : CarouselItemSource, ITabProvider
 	{
 		public string Title { get; set; }
@@ -514,6 +364,9 @@ namespace MvxForms.Platform.Forms.ExPages
 		public string ImageSource { get; set; }
 	}
 
+	/// <summary>
+	/// 引导页默认数据源
+	/// </summary>
 	public class DefaultCarouselItemSource : CarouselItemSource
 	{
 		public DefaultCarouselItemSource()
