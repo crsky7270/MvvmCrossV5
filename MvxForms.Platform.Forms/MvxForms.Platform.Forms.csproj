@@ -31,8 +31,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\CarouselLayout.cs" />
     <Compile Include="Converter\SpacingConverter.cs" />
-    <Compile Include="ExPages\CarouselExPage.cs" />
-    <Compile Include="Controls\CarouselView.cs" />
+    <Compile Include="Controls\CarouselContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />

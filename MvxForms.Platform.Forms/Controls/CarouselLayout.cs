@@ -53,11 +53,13 @@ namespace MvxForms.Platform.Forms.Controls
 		{
 			Orientation = ScrollOrientation.Horizontal;
 
-			Content = new StackLayout
+			_stack = new StackLayout
 			{
 				Orientation = StackOrientation.Horizontal,
 				Spacing = 0
 			};
+
+			Content = _stack;
 		}
 
 		private bool _layingOutChildren;

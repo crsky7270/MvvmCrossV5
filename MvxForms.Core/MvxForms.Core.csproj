@@ -37,9 +37,6 @@
     <EmbeddedResource Include="Pages\BaiduMapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\SingleCarourselPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -59,11 +56,6 @@
       <DependentUpon>BaiduMapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaiduMapViewModel.cs" />
-    <Compile Include="ViewModels\TestCarouselExViewModel.cs" />
-    <Compile Include="Pages\SingleCarourselPage.xaml.cs">
-      <DependentUpon>SingleCarourselPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TestCarouselExPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

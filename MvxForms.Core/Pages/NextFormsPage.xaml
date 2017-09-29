@@ -5,8 +5,6 @@
 	xmlns:local="clr-namespace:MvxForms.Core.Pages" 
 	xmlns:viewModels="clr-namespace:MvxForms.Core.ViewModels;assembly=MvxForms.Core" 
 	x:Class="MvxForms.Core.Pages.NextFormsPage" 
-	xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Core">
-	<ContentPage.Content>
-		<Label Text="{Binding WelcomeStr}" VerticalOptions="Center" HorizontalOptions="Center" />
-	</ContentPage.Content>
+	xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Core"
+	xmlns:ex="clr-namespace:MvxForms.Platform.Forms.Controls;assembly=MvxForms.Platform.Forms">
 </d:MvxContentPage>
