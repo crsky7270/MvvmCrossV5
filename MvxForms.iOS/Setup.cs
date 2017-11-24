@@ -16,7 +16,7 @@ namespace MvxForms.iOS
         {
         }
 
-        protected override MvvmCross.Forms.Core.MvxFormsApplication CreateFormsApplication()
+		protected override MvvmCross.Forms.Platform.MvxFormsApplication CreateFormsApplication()
         {
             return new App();
         }
